@@ -19,3 +19,16 @@ uv run python basic_statistics.py lorenz --data=1,2,3,4,5
 ```
 
 経済におけるジニ係数の理想値は0.2～0.3であり、0.4を超えると警戒ライン
+
+## A
+
+```bash
+python basic_statistics.py mean 1,2,3,4,5
+
+python basic_statistics.py variance 1,2,3,4,5
+
+python basic_statistics.py std 1,2,3,4,5
+
+python basic_statistics.py cv 1,2,3,4,5
+```
+

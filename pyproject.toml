@@ -8,4 +8,5 @@ dependencies = [
     "fire>=0.7.0",
     "matplotlib>=3.10.3",
     "numpy>=2.3.0",
+    "ruff>=0.11.13",
 ]
