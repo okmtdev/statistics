@@ -83,6 +83,50 @@ class BasicStatistics:
         else:
             print("平均値が0のため変動係数は計算できません。")
 
+    def covariance_and_correlation(self, x, y):
+        """
+        共分散と相関係数を計算します。
+
+        Args:
+            x (tuple): カンマ区切りの数値列 例: "1,2,3,4"
+            y (tuple): カンマ区切りの数値列 例: "4,5,6,7"
+        """
+        x_str = ",".join(str(i) for i in x)
+        y_str = ",".join(str(i) for i in y)
+        x_values = np.array([float(i) for i in x_str.split(",") if i.strip() != ""])
+        y_values = np.array([float(i) for i in y_str.split(",") if i.strip() != ""])
+
+        if len(x_values) != len(y_values):
+            print("エラー：xとyのデータ数が異なります。")
+            return
+
+        covariance = np.cov(x_values, y_values)[0, 1]
+        correlation = np.corrcoef(x_values, y_values)[0, 1]
+
+        print(f"共分散: {covariance}")
+        print(f"相関係数: {correlation}")
+
+    def scatter(self, x, y):
+        """
+        xとyの散布図を描画します。
+
+        Args:
+            x (tuple): カンマ区切りの数値列 例: "1,2,3,4"
+            y (tuple): カンマ区切りの数値列 例: "4,5,6,7"
+        """
+        x_str = ",".join(str(i) for i in x)
+        y_str = ",".join(str(i) for i in y)
+        x_values = np.array([float(i) for i in x_str.split(",") if i.strip() != ""])
+        y_values = np.array([float(i) for i in y_str.split(",") if i.strip() != ""])
+
+        if len(x_values) != len(y_values):
+            print("エラー：xとyのデータ数が異なります。")
+            return
+
+        plot = plot_init(title="散布図", x_label="x", y_label="y")
+        plot.scatter(x_values, y_values)
+        plot.show()
+
     def summary(self, data):
         """
         入力データの平均、分散、標準偏差、変動係数をまとめて出力します。

@@ -6,7 +6,7 @@ A simple Python CLI tool for basic statistical analysis, including Lorenz curve 
 
 Show help:
 ```bash
-uv run python basic_statistics.py --help
+uv run python basic.py --help
 ```
 
 ## Lorenz Curve
@@ -15,20 +15,25 @@ uv run python basic_statistics.py --help
 
 To plot a Lorenz curve from a comma-separated list of numbers:
 ```bash
-uv run python basic_statistics.py lorenz --data=1,2,3,4,5
+uv run python basic.py lorenz --data=1,2,3,4,5
 ```
 
 経済におけるジニ係数の理想値は0.2～0.3であり、0.4を超えると警戒ライン
 
-## A
+## 平均
 
 ```bash
-python basic_statistics.py mean 1,2,3,4,5
+python basic.py mean -data=1,2,3,4,5
 
-python basic_statistics.py variance 1,2,3,4,5
+python basic.py variance -data=1,2,3,4,5
 
-python basic_statistics.py std 1,2,3,4,5
+python basic.py std -data=1,2,3,4,5
 
-python basic_statistics.py cv 1,2,3,4,5
+python basic.py cv -data=1,2,3,4,5
 ```
 
+## 統計量まとめ
+
+```bash
+python basic.py summary --data=1,2,3,4,5
+```
