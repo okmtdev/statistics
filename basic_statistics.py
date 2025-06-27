@@ -1,6 +1,7 @@
 import fire
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import skew, kurtosis
 
 
 class BasicStatistics:
@@ -127,6 +128,30 @@ class BasicStatistics:
         plot.scatter(x_values, y_values)
         plot.show()
 
+    def skewness(self, data):
+        """
+        入力データの歪度を計算します。
+
+        Args:
+            data (tuple): カンマ区切りの数値列 例: "1,2,3,4,5"
+        """
+        data_str = ",".join(str(x) for x in data)
+        values = np.array([float(x) for x in data_str.split(",") if x.strip() != ""])
+        skewness_value = skew(values)
+        print(f"歪度: {skewness_value}")
+
+    def kurtosis(self, data):
+        """
+        入力データの尖度を計算します。
+
+        Args:
+            data (tuple): カンマ区切りの数値列 例: "1,2,3,4,5"
+        """
+        data_str = ",".join(str(x) for x in data)
+        values = np.array([float(x) for x in data_str.split(",") if x.strip() != ""])
+        kurtosis_value = kurtosis(values)
+        print(f"尖度: {kurtosis_value}")
+
     def summary(self, data):
         """
         入力データの平均、分散、標準偏差、変動係数をまとめて出力します。
@@ -144,11 +169,15 @@ class BasicStatistics:
             cv_str = f"{cv_value}"
         else:
             cv_str = "平均値が0のため計算不可"
+        skewness_value = skew(values)
+        kurtosis_value = kurtosis(values)
         print("統計量まとめ:")
         print(f"  平均値: {mean_value}")
         print(f"  分散（不偏分散）: {var_value}")
         print(f"  標準偏差（不偏）: {std_value}")
         print(f"  変動係数（CV）: {cv_str}")
+        print(f"  歪度: {skewness_value}")
+        print(f"  尖度: {kurtosis_value}")
 
 
 def plot_init(title: str, x_label: str, y_label: str, figsize: str = (6, 6)):
@@ -162,4 +191,6 @@ def plot_init(title: str, x_label: str, y_label: str, figsize: str = (6, 6)):
 
 
 if __name__ == "__main__":
-    fire.Fire(BasicStatistics)
+    data = "1,2,3,4,5"
+    basic_stats = BasicStatistics()
+    basic_stats.summary(data)
