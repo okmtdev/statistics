@@ -1,4 +1,3 @@
-import fire
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import skew, kurtosis
@@ -137,7 +136,7 @@ class BasicStatistics:
         """
         data_str = ",".join(str(x) for x in data)
         values = np.array([float(x) for x in data_str.split(",") if x.strip() != ""])
-        skewness_value = skew(values)
+        skewness_value = skew(values, bias=False)
         print(f"歪度: {skewness_value}")
 
     def kurtosis(self, data):
@@ -169,7 +168,7 @@ class BasicStatistics:
             cv_str = f"{cv_value}"
         else:
             cv_str = "平均値が0のため計算不可"
-        skewness_value = skew(values)
+        skewness_value = skew(values, bias=False)
         kurtosis_value = kurtosis(values)
         print("統計量まとめ:")
         print(f"  平均値: {mean_value}")
