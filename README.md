@@ -23,19 +23,19 @@ uv run python basic.py lorenz --data=1,2,3,4,5
 ## 平均
 
 ```bash
-python basic.py mean -data=1,2,3,4,5
+uv run python basic.py mean -data=1,2,3,4,5
 
-python basic.py variance -data=1,2,3,4,5
+uv run python basic.py variance -data=1,2,3,4,5
 
-python basic.py std -data=1,2,3,4,5
+uv run python basic.py std -data=1,2,3,4,5
 
-python basic.py cv -data=1,2,3,4,5
+uv run python basic.py cv -data=1,2,3,4,5
 ```
 
 ## 統計量まとめ
 
 ```bash
-python basic.py summary --data=1,2,3,4,5
+uv run python basic.py summary --data=1,2,3,4,5
 ```
 
 - 平均値: 全てのデータを足して、データの個数で割ったもの
@@ -54,12 +54,31 @@ python basic.py summary --data=1,2,3,4,5
 
 # 時系列データ
 
+- 自己相関: 自分自身に対する相関を調べたもので、過去の自分と現在の自分の関係性を探る。定量的に指標を自己相関係数という。統計学ではピアソンの積率相関係数という指標にあたる
+- 偏自己相関: 一次の自己相関の影響を無視して二次の自己相関を検討したいというときに用いる指標
+- トレンド: 
+- 季節性
+- 外因性
+- ノイズ
+
 - 傾向変動: 長期にわたる動きを表す変動
 - 季節変動: 1年を周期として循環する変動
 - 不規則変動: 傾向変動や季節変動以外の変動（予測が困難な偶然の変動）
 
 移動平均: 時系列データに対して，３期の平均や４期の平均などが１期ごとにどのように変動するかを調べ，長期的な傾向を捉えやすくする手法
 
-コレログラム: ~
+コレログラム: コレログラムとは、元データxから時間をずらしたデータyとの相関係数を表すグラフであり、横軸にラグ、縦軸に自己相関をとる。データの周期性と掴むことができる。
+
+- ラグ：元データからどれほどデータがずれているかを表す指標
+- 自己相関：ずらしたデータと元データの相関関係を表す指標
+
+```bash
+uv run python time_series_statistics.py calculate_moving_average -data=1,2,3,4,5
+
+uv run python time_series_statistics.py calculate_moving_average --data=1,2,3,4,5,6,7 --window_size=3
+```
+
+変化率: 物価上昇率など基準となる時期の値に対して比較対象の時期の値がどれだけ増えたかを表す -> コード書く
+
 
 
