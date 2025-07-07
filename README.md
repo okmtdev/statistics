@@ -81,4 +81,4 @@ uv run python time_series_statistics.py calculate_moving_average --data=1,2,3,4,
 変化率: 物価上昇率など基準となる時期の値に対して比較対象の時期の値がどれだけ増えたかを表す -> コード書く
 
 
-
+- [ ] TODO
