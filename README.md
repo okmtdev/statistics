@@ -78,7 +78,7 @@ uv run python time_series_statistics.py calculate_moving_average -data=1,2,3,4,5
 uv run python time_series_statistics.py calculate_moving_average --data=1,2,3,4,5,6,7 --window_size=3
 ```
 
-変化率: 物価上昇率など基準となる時期の値に対して比較対象の時期の値がどれだけ増えたかを表す -> コード書く
+変化率: 物価上昇率など基準となる時期の値に対して比較対象の時期の値がどれだけ増えたかを表す。比較時から基準時を引いたものを基準時で割り、100をかけた
 
-
-- [ ] TODO
+- ラスパイレス関数:
+- パーシェ指数:
